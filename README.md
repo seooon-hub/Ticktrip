@@ -83,28 +83,87 @@
 
 ```
 ticktrip/
-├── lib/
-│   ├── screens/           # 화면 UI 컴포넌트
-│   │   ├── login.dart     # 로그인 화면
-│   │   ├── signup.dart    # 회원가입 화면
-│   │   ├── main_page.dart # 메인 대시보드
-│   │   ├── calendar.dart  # 캘린더 화면
-│   │   ├── expense.dart   # 지출 관리
-│   │   ├── checklist.dart # 체크리스트
-│   │   ├── review.dart    # 리뷰 목록
-│   │   └── ...
-│   ├── services/          # 비즈니스 로직
-│   │   └── local_storage.dart # 로컬 저장소 관리
-│   ├── models/            # 데이터 모델
-│   │   └── post.dart      # 게시물 모델
-│   ├── providers/         # 상태 관리
-│   │   └── auth_provider.dart
-│   └── main.dart          # 앱 진입점
-├── assets/                # 리소스 파일
-│   └── images/           # 이미지 에셋
-├── android/              # Android 플랫폼 설정
-├── ios/                  # iOS 플랫폼 설정
-└── pubspec.yaml          # 의존성 관리
+├── lib/                           # 소스 코드
+│   ├── screens/                   # 화면 UI 컴포넌트
+│   │   ├── login.dart             # 로그인 화면
+│   │   ├── signup.dart            # 회원가입 화면
+│   │   ├── main_page.dart         # 메인 대시보드
+│   │   ├── menu.dart              # 메뉴 화면
+│   │   ├── calendar.dart          # 캘린더 화면
+│   │   ├── calendar_page.dart     # 캘린더 상세 페이지
+│   │   ├── expense.dart           # 지출 관리
+│   │   ├── add_expense_page.dart  # 지출 추가 페이지
+│   │   ├── checklist.dart         # 체크리스트
+│   │   ├── review.dart            # 리뷰 목록
+│   │   ├── add_review.dart        # 리뷰 추가
+│   │   ├── review_detail.dart     # 리뷰 상세
+│   │   ├── board_page.dart        # 게시판 페이지
+│   │   ├── emergencycontactspage.dart # 비상연락처
+│   │   ├── emergencycountrylist.dart  # 국가 목록
+│   │   ├── profile.dart           # 프로필
+│   │   ├── settings.dart          # 설정
+│   │   ├── find_password.dart     # 비밀번호 찾기
+│   │   └── loading.dart           # 로딩 화면
+│   ├── services/                  # 비즈니스 로직
+│   │   └── local_storage.dart     # 로컬 저장소 관리
+│   ├── models/                    # 데이터 모델
+│   │   └── post.dart              # 게시물 모델
+│   ├── providers/                 # 상태 관리
+│   │   └── auth_provider.dart     # 인증 상태 관리
+│   ├── firebase_options.dart      # Firebase 설정
+│   └── main.dart                  # 앱 진입점
+├── assets/                        # 리소스 파일
+│   └── images/                    # 이미지 에셋
+│       ├── google.png             # Google 로그인 아이콘
+│       ├── instagram.png          # Instagram 아이콘
+│       └── account.png            # 계정 아이콘
+├── android/                       # Android 플랫폼 설정
+│   ├── app/                       # Android 앱 설정
+│   │   ├── build.gradle           # 앱 빌드 설정
+│   │   ├── google-services.json   # Firebase 설정 (보안 주의)
+│   │   ├── debug.keystore         # 디버그 키스토어
+│   │   └── src/                   # 소스 코드
+│   │       ├── main/              # 메인 소스
+│   │       │   ├── AndroidManifest.xml
+│   │       │   ├── java/          # Java 소스
+│   │       │   └── kotlin/        # Kotlin 소스
+│   │       ├── debug/             # 디버그 설정
+│   │       └── profile/           # 프로파일 설정
+│   ├── gradle/                    # Gradle 설정
+│   │   └── wrapper/               # Gradle Wrapper
+│   ├── build.gradle               # 프로젝트 빌드 설정
+│   ├── gradle.properties          # Gradle 속성
+│   ├── settings.gradle            # Gradle 설정
+│   ├── gradlew                    # Gradle Wrapper 스크립트 (Unix)
+│   ├── gradlew.bat                # Gradle Wrapper 스크립트 (Windows)
+│   └── .gitignore                 # Android Git 무시 파일
+├── ios/                           # iOS 플랫폼 설정
+│   ├── Runner/                    # iOS 앱 설정
+│   │   ├── AppDelegate.swift      # iOS 앱 델리게이트
+│   │   ├── Assets.xcassets/       # iOS 에셋
+│   │   │   ├── AppIcon.appiconset/ # 앱 아이콘
+│   │   │   └── LaunchImage.imageset/ # 런치 이미지
+│   │   ├── Base.lproj/            # 기본 언어 설정
+│   │   └── GeneratedPluginRegistrant.h
+│   ├── Runner.xcodeproj/          # Xcode 프로젝트
+│   ├── Runner.xcworkspace/        # Xcode 워크스페이스
+│   ├── RunnerTests/               # iOS 테스트
+│   ├── Flutter/                   # Flutter 설정
+│   │   ├── AppFrameworkInfo.plist
+│   │   ├── Debug.xcconfig
+│   │   ├── Release.xcconfig
+│   │   ├── Generated.xcconfig
+│   │   └── flutter_export_environment.sh
+│   ├── Podfile                    # CocoaPods 설정
+│   └── .gitignore                 # iOS Git 무시 파일
+├── pubspec.yaml                   # 의존성 정의
+├── pubspec.lock                   # 의존성 버전 고정
+├── README.md                      # 프로젝트 설명
+├── .gitignore                     # Git 무시 파일
+├── .gitattributes                 # Git 속성
+├── analysis_options.yaml          # 코드 분석 설정
+├── firebase.json                  # Firebase 설정
+└── .metadata                      # Flutter 메타데이터
 ```
 
 ## 🚀 설치 및 실행
